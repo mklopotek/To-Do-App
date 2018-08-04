@@ -19,8 +19,7 @@ const Task = ({text, subText, isComplited}) => {
         <div className='list-item'>
         <ListItem 
             primaryText={text} 
-            nestedItems={
-                [subTextToParagraph(subText)]}
+            nestedItems={subTextToParagraph(subText)}
             leftCheckbox={<Checkbox />} />
         </div>
     )

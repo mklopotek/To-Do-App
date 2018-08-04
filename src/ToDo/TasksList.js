@@ -5,8 +5,6 @@ import { List } from 'material-ui/List';
 
 const TasksList = ({ tasksArray }) => {
 
-    console.log(tasksArray.subText)
-
     return (
         <div className='list'>
             <List>
