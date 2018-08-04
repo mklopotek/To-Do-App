@@ -8,3 +8,14 @@ h1 {
   text-align: center;
   color: silver;
 }
+
+.add-task-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.to-do-app-container{
+ display: flex;
+ flex-direction: column;
+}

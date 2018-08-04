@@ -2,23 +2,23 @@ import React from 'react';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const AddTaskForm = (props) => {
     const styles = {
-        width: '40vw',
+        width: '60vw',
     }
 
     return (
         <div className="add-task-form">
-            <TextField
-                floatingLabelText="Add new task"
+            <div><TextField
+                floatingLabelText="Write new task here"
                 style={styles}
-            />
-            <FloatingActionButton 
-                secondary={true}
-            >
-                <ContentAdd />
-            </FloatingActionButton>
+            /></div>
+            <div><RaisedButton 
+                label="Add new task to the list" primary={true} 
+                style={styles} /></div>
+
         </div>);
 
 }

@@ -27,7 +27,7 @@ class ToDo extends React.Component {
 render(){
  
     return (
-    <div> 
+    <div className='to-do-app-container'> 
         <h1> Magda's ToDo App </h1>
         <AddTaskForm />
         <TasksList 
