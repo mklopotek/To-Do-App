@@ -1,9 +1,7 @@
 import React from 'react'
 // import DeleteIcon from '@material-ui/icons/Delete';
 import {ListItem} from 'material-ui/List';
-// import Divider from 'material-ui/Divider';
 import Checkbox from 'material-ui/Checkbox';
-// import Toggle from 'material-ui/Toggle';
 
 const Task = ({text, subText, isComplited}) => {
 

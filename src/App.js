@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import ToDo from './ToDo'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import PaperRefined from './GlobalComponents/PaperRefined'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import RenderToDo from './RenderToDo';
 
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider>
-        <PaperRefined>
-          {<ToDo />}
-        </PaperRefined>
-        </MuiThemeProvider>
+      <div>
+        <Router>
+          <Route path='/' exact component={RenderToDo} />
+        </Router>
+      </div>
     );
   }
 }

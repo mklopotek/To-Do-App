@@ -25,6 +25,18 @@ class ToDo extends React.Component {
         }
     }
 
+    componentDidMount() {
+        const lastTasksArray = JSON.parse(localStorage.getItem('magda-todo-app-tasksArray'))
+
+        if (lastTasksArray === null) return
+
+        this.setState({ tasksArray: lastTasksArray })
+    }
+
+    componentWillUnmount() {
+        localStorage.setItem('magda-todo-app-tasksArray', JSON.stringify(this.state.tasksArray))
+    }
+
     onNewTaskTextChanged = (event, value) => {
         this.setState({ newTaskText: value })
     }
@@ -33,7 +45,7 @@ class ToDo extends React.Component {
         const tasksArray = this.state.tasksArray
         const newTaskText = this.state.newTaskText
 
-        if(newTaskText === '') return
+        if (newTaskText === '') return
 
         const newTask = {
             text: newTaskText,
