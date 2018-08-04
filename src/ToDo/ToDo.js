@@ -4,7 +4,7 @@ import TasksList from './TasksList';
 
 
 class ToDo extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props)
         this.state = {
             tasksArray: [
@@ -26,30 +26,50 @@ class ToDo extends React.Component {
     }
 
     onNewTaskTextChanged = (event, value) => {
-        this.setState({newTaskText: value})
+        this.setState({ newTaskText: value })
     }
 
     onAddNewTaskClickHandler = () => {
-        return
+        const tasksArray = this.state.tasksArray
+        const newTaskText = this.state.newTaskText
+
+        if(newTaskText === '') return
+
+        const newTask = {
+            text: newTaskText,
+            subText: ['tu', 'na razie', 'nic'],
+            isComplited: false,
+            key: Date.now()
+        }
+
+        const newTasksArray = tasksArray.concat(newTask)
+
+        this.setState(
+            {
+                tasksArray: newTasksArray,
+                newTaskText: ''
+            }
+        )
     }
 
 
-render(){
- 
-    return (
-    <div className='to-do-app-container'> 
-        <h1> Magda's ToDo App </h1>
-        <AddTaskForm 
-            newTaskText={this.state.newTaskText}
-            onNewTaskTextChanged={this.onNewTaskTextChanged}
-        />
-        <TasksList 
-            tasksArray={this.state.tasksArray}
-        />
-    </div>)
+    render() {
 
-}
-    
+        return (
+            <div className='to-do-app-container'>
+                <h1> Magda's ToDo App </h1>
+                <AddTaskForm
+                    newTaskText={this.state.newTaskText}
+                    onNewTaskTextChanged={this.onNewTaskTextChanged}
+                    onAddNewTaskClickHandler={this.onAddNewTaskClickHandler}
+                />
+                <TasksList
+                    tasksArray={this.state.tasksArray}
+                />
+            </div>)
+
+    }
+
 }
 
 
