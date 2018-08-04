@@ -7,15 +7,11 @@ const styles = {
     backgroundColor: '' 
 }
 
-const PaperRefined = ({children}) => {
-
-    retrun(
+const PaperRefined = (props) => (
         <Paper style={styles}>
-            {children}
+            {props.children}
         </Paper>
     )
-
-} 
 
 
 export default PaperRefined

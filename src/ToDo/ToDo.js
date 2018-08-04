@@ -1,11 +1,26 @@
 import React from 'react'
-import Task from './Task'
+import AddTaskForm from './AddTaskForm'
+import TasksList from './TasksList';
+
 
 class ToDo extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
-            number: 0
+            tasksArray: [
+                {
+                    text: 'Zrób aplikacje to do',
+                    subText: ['zrób liste', 'zrób wyszukiwarke', 'zrób coś tam'],
+                    isComplited: false,
+                    key: 123
+                },
+                {
+                    text: 'Weź się do roboty!',
+                    subText: ['zrób liste', 'zrób wyszukiwarke', 'zrób coś tam'],
+                    isComplited: false,
+                    key: 321
+                }
+            ]
         }
     }
 
@@ -14,7 +29,10 @@ render(){
     return (
     <div> 
         <h1> Magda's ToDo App </h1>
-        <Task />
+        <AddTaskForm />
+        <TasksList 
+            tasksArray={this.state.tasksArray}
+        />
     </div>)
 
 }

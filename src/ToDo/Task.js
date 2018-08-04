@@ -1,22 +1,30 @@
-import React from 'react';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add'
-import TextField from 'material-ui/TextField';
+import React from 'react'
+// import DeleteIcon from '@material-ui/icons/Delete';
+import {ListItem} from 'material-ui/List';
+// import Divider from 'material-ui/Divider';
+import Checkbox from 'material-ui/Checkbox';
+// import Toggle from 'material-ui/Toggle';
 
-const Task = (props) => {
+const Task = ({text, subText, isComplited}) => {
+
+    const subTextToParagraph = (subText)=> {
+        return subText.map((e, i) => 
+            <ListItem secondaryText={e}
+                key={i} />
+
+        )
+    }
 
     return (
-        <div>
-            <TextField
-                floatingLabelText="Add new task"
-            />
-            <FloatingActionButton 
-                secondary={true}
-            >
-                <ContentAdd />
-            </FloatingActionButton>
-        </div>);
+        <div className='list-item'>
+        <ListItem 
+            primaryText={text} 
+            nestedItems={
+                [subTextToParagraph(subText)]}
+            leftCheckbox={<Checkbox />} />
+        </div>
+    )
 
 }
 
-export default Task
+export default Task 
