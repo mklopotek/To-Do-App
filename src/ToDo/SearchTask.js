@@ -2,7 +2,7 @@ import React from 'react'
 import TextField from 'material-ui/TextField';
 
 
-const SearchTask = ({ searchValue, onSearchTaskTextChanged, onShowTaskComplited }) => {
+const SearchTask = ({ searchValue, onSearchTaskTextChanged }) => {
 
     const styles = {
         width: '100%',

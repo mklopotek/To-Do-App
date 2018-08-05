@@ -23,7 +23,8 @@ class ToDo extends React.Component {
                 }
             ],
             newTaskText: '',
-            searchValue: ''
+            searchValue: '',
+            buttonValue: null
         }
     }
 
@@ -74,16 +75,20 @@ class ToDo extends React.Component {
         this.setState({ tasksArray: newArray })
     }
 
+    onButtonsClicked = (value) => {
+        this.setState({ buttonValue: value })
+    }
+
 
     render() {
 
-        const searchResultsToNewArray = (array) => {
-            let searchResultsArray
+        const searchResultToNewArray = (array) => {
+            let searchResultArray
 
             if (this.state.searchValue === '') {
-                searchResultsArray = []
+                searchResultArray = []
             } else {
-                searchResultsArray = array
+                searchResultArray = array
                     .map(e => e)
                     .filter(e =>
                         e.text.indexOf(this.state.searchValue) >= 0 ||
@@ -91,12 +96,26 @@ class ToDo extends React.Component {
                         e.text.toLowerCase().indexOf(this.state.searchValue) >= 0)
             }
 
-            return searchResultsArray
+            return searchResultArray
         }
 
         const onShowTaskCompleted = () => {
+            let resultArray
+            const array = this.state.tasksArray
 
+            if (this.state.buttonValue === null) {
+                resultArray = array
+            } else if (this.state.buttonValue === true){
+                resultArray = array
+                    .map(e => e)
+                    .filter(e => e.isCompleted)
+            } else {
+                resultArray = array
+                    .map(e => e)
+                    .filter(e => !e.isCompleted)
+            }
 
+            return resultArray
         }
 
         return (
@@ -119,16 +138,16 @@ class ToDo extends React.Component {
                         <TasksList
                             className={'list-searched'}
                             subHeaderText={'The task you are looking for is:'}
-                            tasksArray={searchResultsToNewArray(this.state.tasksArray)}
+                            tasksArray={searchResultToNewArray(this.state.tasksArray)}
                             onTaskCompleted={this.onTaskCompleted}
                         />
 
                         <TasksList
                             className={'list-all'}
                             subHeaderText={'List of your tasks:'}
-                            tasksArray={this.state.tasksArray}
+                            tasksArray={onShowTaskCompleted()}
                             onTaskCompleted={this.onTaskCompleted}
-                            onShowTaskCompleted={onShowTaskCompleted}
+                            onButtonsClicked={this.onButtonsClicked}
                         />
                     </div>
                 </div>

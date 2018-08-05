@@ -7,26 +7,30 @@ import Bookmark from 'material-ui/svg-icons/action/bookmark'
 import BookmarkBorder from 'material-ui/svg-icons/action/bookmark-border'
 import Book from 'material-ui/svg-icons/action/book'
 
-const TasksList = ({ tasksArray, onTaskCompleted, onShowTaskCompleted, className, subHeaderText }) => {
+const TasksList = ({ tasksArray, onTaskCompleted, className, subHeaderText, onButtonsClicked }) => {
 
     return (
         <div className={className}>
             {
-                onShowTaskCompleted ?
+                className === 'list-all' ?
                     <div>
                         <IconButton
                             tooltip="Tasks completed">
                             <Bookmark
-                                // onChange={onShowTaskCompleted}
+                                onClick={()=> onButtonsClicked(true)}
                             />
                         </IconButton>
                         <IconButton
                             tooltip="Tasks uncompleted">
-                            <BookmarkBorder />
+                            <BookmarkBorder 
+                                onClick={()=> onButtonsClicked(false)}
+                            />
                         </IconButton>
                         <IconButton
                             tooltip="All Tasks">
-                            <Book />
+                            <Book 
+                                 onClick={()=> onButtonsClicked(null)}
+                            />
                         </IconButton>
                     </div>
                     :
