@@ -26,9 +26,8 @@ class ToDo extends React.Component {
     }
 
     componentDidMount() {
-        const lastTasksArray = JSON.parse(localStorage.getItem('magda-todo-app-tasksArray'))
-
-        if (lastTasksArray === null) return
+        const lastTasksArray = JSON.parse(localStorage.getItem('magda-todo-app-tasksArray')) 
+        || this.state.tasksArray
 
         this.setState({ tasksArray: lastTasksArray })
     }
