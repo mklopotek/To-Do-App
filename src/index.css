@@ -48,7 +48,7 @@ h1 {
   flex-basis: auto;
 } */
 
-
+.list-item__task-completed,
 .list-item__task-uncompleted {
 flex-grow: 4;
 margin-left:auto;
