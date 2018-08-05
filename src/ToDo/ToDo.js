@@ -38,7 +38,7 @@ class ToDo extends React.Component {
 
         const newTask = {
             text: newTaskText,
-            subText: ['tu', 'na razie', 'nic'],
+            subText: ['nie', 'patrz', 'tu'],
             isCompleted: false,
             key: Date.now()
         }

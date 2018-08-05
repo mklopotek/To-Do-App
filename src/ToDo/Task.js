@@ -19,7 +19,7 @@ const Task = ({ text, subText, isCompleted, index, onTaskCompleted, onDeleteTask
     if (isCompleted) { completed = '-completed' } else { completed = '-uncompleted' }
 
     return (
-        <div>
+        <div className='list-item'>
             <ListItem
                 className={'list-item__task' + completed}
                 primaryText={text}
@@ -32,6 +32,7 @@ const Task = ({ text, subText, isCompleted, index, onTaskCompleted, onDeleteTask
                 }
             />
             <IconButton
+                className={'list-item__icon-delete'}
                 tooltip="Delete this task">
                 <DeleteIcon
                     values={index}
