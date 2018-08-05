@@ -8,20 +8,7 @@ class ToDo extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            tasksArray: [
-                {
-                    text: 'Zrób aplikacje to do',
-                    subText: ['zrób liste', 'zrób wyszukiwarke', 'zrób coś tam'],
-                    isCompleted: true,
-                    key: 123
-                },
-                {
-                    text: 'Weź się do roboty!',
-                    subText: ['zrób liste', 'zrób wyszukiwarke', 'zrób coś tam'],
-                    isCompleted: false,
-                    key: 321
-                }
-            ],
+            tasksArray: [],
             newTaskText: '',
             searchValue: '',
             buttonValue: null
@@ -75,20 +62,30 @@ class ToDo extends React.Component {
         this.setState({ tasksArray: newArray })
     }
 
-    onButtonsClicked = (value) => {
+    onButtonsFilterClicked = (value) => {
         this.setState({ buttonValue: value })
+    }
+
+    onDeleteTask = (index) => {
+
+        const newTasksArray = this.state.tasksArray.filter((e, i) => i !== index)
+
+        this.setState({tasksArray: newTasksArray})
+
+        localStorage.setItem('magda-todo-app-tasksArray', JSON.stringify(newTasksArray))
+
     }
 
 
     render() {
 
-        const searchResultToNewArray = (array) => {
-            let searchResultArray
+        const searchResultsToNewArray = (array) => {
+            let searchResulstArray
 
             if (this.state.searchValue === '') {
-                searchResultArray = []
+                searchResulstArray = null
             } else {
-                searchResultArray = array
+                searchResulstArray = array
                     .map(e => e)
                     .filter(e =>
                         e.text.indexOf(this.state.searchValue) >= 0 ||
@@ -96,7 +93,7 @@ class ToDo extends React.Component {
                         e.text.toLowerCase().indexOf(this.state.searchValue) >= 0)
             }
 
-            return searchResultArray
+            return searchResulstArray
         }
 
         const onShowTaskCompleted = () => {
@@ -105,7 +102,7 @@ class ToDo extends React.Component {
 
             if (this.state.buttonValue === null) {
                 resultArray = array
-            } else if (this.state.buttonValue === true){
+            } else if (this.state.buttonValue) {
                 resultArray = array
                     .map(e => e)
                     .filter(e => e.isCompleted)
@@ -116,6 +113,20 @@ class ToDo extends React.Component {
             }
 
             return resultArray
+        }
+
+        const subHeaderTextChanger = () => {
+            let subHeaderText
+
+            if (this.state.buttonValue === null) {
+                subHeaderText = 'List of all your tasks:'
+            } else if (this.state.buttonValue) {
+                subHeaderText = 'Tasks completed:'
+            } else {
+                subHeaderText = 'Tasks uncompleted'
+            }
+
+            return subHeaderText
         }
 
         return (
@@ -137,17 +148,19 @@ class ToDo extends React.Component {
                     <div className='list'>
                         <TasksList
                             className={'list-searched'}
-                            subHeaderText={'The task you are looking for is:'}
-                            tasksArray={searchResultToNewArray(this.state.tasksArray)}
+                            subHeaderText={'The task you are looking for is here:'}
+                            tasksArray={searchResultsToNewArray(this.state.tasksArray)}
                             onTaskCompleted={this.onTaskCompleted}
+                            onDeleteTask={this.onDeleteTask}
                         />
 
                         <TasksList
                             className={'list-all'}
-                            subHeaderText={'List of your tasks:'}
+                            subHeaderText={subHeaderTextChanger()}
                             tasksArray={onShowTaskCompleted()}
                             onTaskCompleted={this.onTaskCompleted}
-                            onButtonsClicked={this.onButtonsClicked}
+                            onDeleteTask={this.onDeleteTask}
+                            onButtonsFilterClicked={this.onButtonsFilterClicked}
                         />
                     </div>
                 </div>

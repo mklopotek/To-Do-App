@@ -7,7 +7,10 @@ import Bookmark from 'material-ui/svg-icons/action/bookmark'
 import BookmarkBorder from 'material-ui/svg-icons/action/bookmark-border'
 import Book from 'material-ui/svg-icons/action/book'
 
-const TasksList = ({ tasksArray, onTaskCompleted, className, subHeaderText, onButtonsClicked }) => {
+
+const TasksList = ({ tasksArray, onTaskCompleted, className, subHeaderText, onDeleteTask, onButtonsFilterClicked }) => {
+
+    if (tasksArray === null) return null
 
     return (
         <div className={className}>
@@ -17,19 +20,19 @@ const TasksList = ({ tasksArray, onTaskCompleted, className, subHeaderText, onBu
                         <IconButton
                             tooltip="Tasks completed">
                             <Bookmark
-                                onClick={()=> onButtonsClicked(true)}
+                                onClick={() => onButtonsFilterClicked(true)}
                             />
                         </IconButton>
                         <IconButton
                             tooltip="Tasks uncompleted">
-                            <BookmarkBorder 
-                                onClick={()=> onButtonsClicked(false)}
+                            <BookmarkBorder
+                                onClick={() => onButtonsFilterClicked(false)}
                             />
                         </IconButton>
                         <IconButton
                             tooltip="All Tasks">
-                            <Book 
-                                 onClick={()=> onButtonsClicked(null)}
+                            <Book
+                                onClick={() => onButtonsFilterClicked(null)}
                             />
                         </IconButton>
                     </div>
@@ -40,14 +43,15 @@ const TasksList = ({ tasksArray, onTaskCompleted, className, subHeaderText, onBu
                 <Subheader>{subHeaderText}</Subheader>
 
                 {tasksArray.map((e, index) =>
-                    <Task
-                        text={e.text}
-                        subText={e.subText}
-                        key={e.key}
-                        isCompleted={e.isCompleted}
-                        index={index}
-                        onTaskCompleted={onTaskCompleted}
-                    />
+                        <Task
+                            text={e.text}
+                            subText={e.subText}
+                            key={e.key}
+                            isCompleted={e.isCompleted}
+                            index={index}
+                            onTaskCompleted={onTaskCompleted}
+                            onDeleteTask={onDeleteTask}
+                        />
                 )}
             </List>
         </div>

@@ -26,7 +26,31 @@ h1 {
   width: 100%;
 }
 
-.list-item-completed{
+.list-item__task-completed{
   text-decoration: line-through;
   opacity: 0.3;
+}
+
+/* .list-item__task-uncompleted,
+.list-item__task-completed{
+  display: flex;
+  flex-direction: row;
+}
+
+.list-item{
+  flex-basis: auto;
+  justify-content: flex-start;
+}
+
+.list-item-delete {
+  justify-content: flex-end;
+  align-self: center;
+  flex-basis: auto;
+} */
+
+.list-item__icon-delete{
+display: block;
+position: absolute;
+right: 5;
+
 }
