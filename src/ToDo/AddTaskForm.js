@@ -21,7 +21,7 @@ const AddTaskForm = ({ onNewTaskTextChanged, onAddNewTaskClickHandler, newTaskTe
             </div>
             <div>
                 <RaisedButton
-                    label="Add new task to the list"
+                    label="Add new task"
                     primary={true}
                     style={styles}
                     onClick={onAddNewTaskClickHandler}

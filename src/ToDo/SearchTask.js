@@ -1,14 +1,15 @@
 import React from 'react'
 import TextField from 'material-ui/TextField';
 
-const SearchTask = ({searchValue, onSearchTaskTextChanged}) => {
+
+const SearchTask = ({ searchValue, onSearchTaskTextChanged, onShowTaskComplited }) => {
 
     const styles = {
-        width: '60vw',
+        width: '100%',
     }
 
     return (
-        <div className='search-task'>
+        <div className='search-task-form'>
             <TextField
                 type={'text'}
                 style={styles}
@@ -16,10 +17,7 @@ const SearchTask = ({searchValue, onSearchTaskTextChanged}) => {
                 value={searchValue}
                 onChange={onSearchTaskTextChanged}
             />
-
         </div>)
-
-
 }
 
 export default SearchTask
