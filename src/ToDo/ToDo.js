@@ -1,6 +1,7 @@
 import React from 'react'
 import AddTaskForm from './AddTaskForm'
 import TasksList from './TasksList';
+import SearchTask from './SearchTask';
 
 
 class ToDo extends React.Component {
@@ -11,7 +12,7 @@ class ToDo extends React.Component {
                 {
                     text: 'Zrób aplikacje to do',
                     subText: ['zrób liste', 'zrób wyszukiwarke', 'zrób coś tam'],
-                    isComplited: false,
+                    isComplited: true,
                     key: 123
                 },
                 {
@@ -21,7 +22,8 @@ class ToDo extends React.Component {
                     key: 321
                 }
             ],
-            newTaskText: ''
+            newTaskText: '',
+            searchValue: ''
         }
     }
 
@@ -34,6 +36,10 @@ class ToDo extends React.Component {
 
     onNewTaskTextChanged = (event, value) => {
         this.setState({ newTaskText: value })
+    }
+
+    onSearchTaskTextChanged = (event, value) => {
+        this.setState({ searchValue: value })
     }
 
     onAddNewTaskClickHandler = () => {
@@ -62,6 +68,13 @@ class ToDo extends React.Component {
     }
 
 
+    onTaskComplited = (index) => {
+        const newArray = this.state.tasksArray
+        newArray[index].isComplited = !newArray[index].isComplited
+
+        this.setState({ tasksArray: newArray })
+    }
+
     render() {
 
         return (
@@ -72,8 +85,15 @@ class ToDo extends React.Component {
                     onNewTaskTextChanged={this.onNewTaskTextChanged}
                     onAddNewTaskClickHandler={this.onAddNewTaskClickHandler}
                 />
+
+                <SearchTask
+                    searchValue={this.state.searchValue}
+                    onSearchTaskTextChanged={this.onSearchTaskTextChanged}
+                />
+
                 <TasksList
                     tasksArray={this.state.tasksArray}
+                    onTaskComplited={this.onTaskComplited}
                 />
             </div>)
 

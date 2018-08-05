@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 const AddTaskForm = ({ onNewTaskTextChanged, onAddNewTaskClickHandler, newTaskText }) => {
+    
     const styles = {
         width: '60vw',
     }
@@ -20,9 +21,9 @@ const AddTaskForm = ({ onNewTaskTextChanged, onAddNewTaskClickHandler, newTaskTe
             </div>
             <div>
                 <RaisedButton
-                    label="Add new task to the list" 
+                    label="Add new task to the list"
                     primary={true}
-                    style={styles} 
+                    style={styles}
                     onClick={onAddNewTaskClickHandler}
                 />
             </div>

@@ -3,7 +3,7 @@ import React from 'react'
 import {ListItem} from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 
-const Task = ({text, subText, isComplited}) => {
+const Task = ({text, subText, isComplited, index, onTaskComplited}) => {
 
     const subTextToParagraph = (subText)=> {
         return subText.map((e, i) => 
@@ -13,12 +13,21 @@ const Task = ({text, subText, isComplited}) => {
         )
     }
 
+    let complited = ''
+
+    if (isComplited) complited = '-complited'
+
     return (
-        <div className='list-item'>
+        <div className={'list-item' + complited}>
         <ListItem 
             primaryText={text} 
             nestedItems={subTextToParagraph(subText)}
-            leftCheckbox={<Checkbox />} />
+            leftCheckbox={
+            <Checkbox 
+                checked={isComplited}
+                onCheck={()=>onTaskComplited(index)}
+            />
+            } />
         </div>
     )
 
