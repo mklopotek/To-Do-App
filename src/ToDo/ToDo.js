@@ -10,7 +10,7 @@ class ToDo extends React.Component {
         this.state = {
             tasksArray: [],
             newTaskText: '',
-            newSubtaskArray: [],
+            newSubTaskArray: [],
             subTaskFields: 0,
             searchValue: '',
             buttonValue: null
@@ -28,15 +28,27 @@ class ToDo extends React.Component {
         this.setState({ newTaskText: value })
     }
 
+    onNewSubTaskTextChanged = (event, value) => {
+
+        console.log(event)
+        console.log(value)
+        // let newSubTaskArray = this.state.newSubTaskArray
+        // newSubTaskArray[index] = value
+
+        // this.setState({ newSubTaskArray: newSubTaskArray })
+    }
+
     onSearchTaskTextChanged = (event, value) => {
         this.setState({ searchValue: value })
     }
 
     addSubtaskField = () => {
         this.setState({
-            subTaskFields: this.state.subTaskFields + 1
+            subTaskFields: this.state.subTaskFields + 1,
+            newSubTaskArray: this.state.newSubTaskArray.concat([''])
         })
     }
+
 
     onAddNewTaskClickHandler = () => {
         const tasksArray = this.state.tasksArray
@@ -148,7 +160,8 @@ class ToDo extends React.Component {
                             onAddNewTaskClickHandler={this.onAddNewTaskClickHandler}
                             addSubtaskField={this.addSubtaskField}
                             subTaskFields={this.state.subTaskFields}
-                            newSubtaskArray={this.state.newSubtaskArray}
+                            newSubTaskArray={this.state.newSubTaskArray}
+                            onNewSubTaskTextChanged={this.onNewSubTaskTextChanged}
                         />
 
                         <SearchTask

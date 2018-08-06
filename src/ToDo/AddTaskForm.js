@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const AddTaskForm = ({ onNewTaskTextChanged, onAddNewTaskClickHandler, newTaskText, addSubtaskField, subTaskFields, newSubTaskArray }) => {
+const AddTaskForm = ({ onNewTaskTextChanged, onAddNewTaskClickHandler, newTaskText, addSubtaskField, subTaskFields, newSubTaskArray, onNewSubTaskTextChanged }) => {
 
     const styles = {
         width: '60vw',
@@ -21,8 +21,8 @@ const AddTaskForm = ({ onNewTaskTextChanged, onAddNewTaskClickHandler, newTaskTe
                 style={styles2}
                 key={index}
                 floatingLabelText="Write subtask for this task"
-                // value={newSubTaskArray[index]}
-                // onChange={onNewTaskTextChanged}
+                value={newSubTaskArray[index]}
+                onChange={onNewSubTaskTextChanged}
             />
         ))
     }
