@@ -10,6 +10,8 @@ class ToDo extends React.Component {
         this.state = {
             tasksArray: [],
             newTaskText: '',
+            newSubtaskArray: [],
+            subTaskFields: 0,
             searchValue: '',
             buttonValue: null
         }
@@ -28,6 +30,12 @@ class ToDo extends React.Component {
 
     onSearchTaskTextChanged = (event, value) => {
         this.setState({ searchValue: value })
+    }
+
+    addSubtaskField = () => {
+        this.setState({
+            subTaskFields: this.state.subTaskFields + 1
+        })
     }
 
     onAddNewTaskClickHandler = () => {
@@ -70,7 +78,7 @@ class ToDo extends React.Component {
 
         const newTasksArray = this.state.tasksArray.filter((e, i) => i !== index)
 
-        this.setState({tasksArray: newTasksArray})
+        this.setState({ tasksArray: newTasksArray })
 
         localStorage.setItem('magda-todo-app-tasksArray', JSON.stringify(newTasksArray))
 
@@ -138,6 +146,9 @@ class ToDo extends React.Component {
                             newTaskText={this.state.newTaskText}
                             onNewTaskTextChanged={this.onNewTaskTextChanged}
                             onAddNewTaskClickHandler={this.onAddNewTaskClickHandler}
+                            addSubtaskField={this.addSubtaskField}
+                            subTaskFields={this.state.subTaskFields}
+                            newSubtaskArray={this.state.newSubtaskArray}
                         />
 
                         <SearchTask
