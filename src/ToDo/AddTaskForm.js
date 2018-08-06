@@ -20,6 +20,7 @@ const AddTaskForm = ({ onNewTaskTextChanged, onAddNewTaskClickHandler, newTaskTe
                 type={'text'}
                 style={styles2}
                 key={index}
+                id={'' + index}
                 floatingLabelText="Write subtask for this task"
                 value={newSubTaskArray[index]}
                 onChange={onNewSubTaskTextChanged}

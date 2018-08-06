@@ -30,12 +30,13 @@ class ToDo extends React.Component {
 
     onNewSubTaskTextChanged = (event, value) => {
 
-        console.log(event)
-        console.log(value)
-        // let newSubTaskArray = this.state.newSubTaskArray
-        // newSubTaskArray[index] = value
+        const id = event.target.id
 
-        // this.setState({ newSubTaskArray: newSubTaskArray })
+        let newSubTaskArray = this.state.newSubTaskArray
+        newSubTaskArray[id] = value
+
+        this.setState({ newSubTaskArray: newSubTaskArray })
+
     }
 
     onSearchTaskTextChanged = (event, value) => {
@@ -53,12 +54,13 @@ class ToDo extends React.Component {
     onAddNewTaskClickHandler = () => {
         const tasksArray = this.state.tasksArray
         const newTaskText = this.state.newTaskText
+        const newSubTaskArray = this.state.newSubTaskArray
 
         if (newTaskText === '') return
 
         const newTask = {
             text: newTaskText,
-            subText: ['nie', 'patrz', 'tu'],
+            subText: newSubTaskArray,
             isCompleted: false,
             key: Date.now()
         }
