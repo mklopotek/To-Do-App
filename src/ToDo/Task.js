@@ -11,11 +11,16 @@ const Task = ({ text, subText, isCompleted, index, onTaskCompleted, onDeleteTask
             let subCompleted = ''
             if (subIsCompleted[i]) { subCompleted = 'subTask-completed' } else { subCompleted = 'subTask-uncompleted' }
 
-            return (<ListItem secondaryText={e}
-                className={isTaskCompleted + ' ' + subCompleted}
-                key={i} 
-                onClick={onSubTaskCompleted}
-                />)
+            return (
+                <ListItem
+                    secondaryText={e}
+                    className={isTaskCompleted + ' ' + subCompleted}
+                    key={i}
+                    id={'' + i}
+                    label={'' + index}
+                    onClick={onSubTaskCompleted}
+                />
+            )
         }
         )
     }

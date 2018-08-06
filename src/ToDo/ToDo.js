@@ -30,10 +30,10 @@ class ToDo extends React.Component {
 
     onNewSubTaskTextChanged = (event, value) => {
 
-        const id = event.target.id
+        const index = event.target.id
 
         let newSubTaskArray = this.state.newSubTaskArray
-        newSubTaskArray[id] = value
+        newSubTaskArray[index] = value
 
         this.setState({ newSubTaskArray: newSubTaskArray })
 
@@ -50,12 +50,18 @@ class ToDo extends React.Component {
         })
     }
 
-    onSubTaskCompleted = () => {
-        console.log('clksjdhd')
-        // tasksArray[index].subIsCompleted[index2] = tasksArray[index].subIsCompleted[index2]? false : true
+    onSubTaskCompleted = (event) => {
+
+        const indexSubTask = event.target.id
+        const indexTask = event.target.label
+        console.log(event)
+
+        // let newTasksArray = this.state.tasksArray
+        
+        // newTasksArray[indexTask].subIsCompleted[indexSubTask] = tasksArray[indexTask].subIsCompleted[indexSubTask]? false : true
 
         // this.setState({
-        //     tasksArray: 
+        //     tasksArray: newTasksArray
         // })
     }
 
