@@ -50,17 +50,29 @@ class ToDo extends React.Component {
         })
     }
 
+    onSubTaskCompleted = () => {
+        console.log('clksjdhd')
+        // tasksArray[index].subIsCompleted[index2] = tasksArray[index].subIsCompleted[index2]? false : true
+
+        // this.setState({
+        //     tasksArray: 
+        // })
+    }
+
 
     onAddNewTaskClickHandler = () => {
         const tasksArray = this.state.tasksArray
         const newTaskText = this.state.newTaskText
         const newSubTaskArray = this.state.newSubTaskArray
 
+        const subIsCompleted = Array(newSubTaskArray.length).fill(false)
+
         if (newTaskText === '') return
 
         const newTask = {
             text: newTaskText,
             subText: newSubTaskArray,
+            subIsCompleted: subIsCompleted,
             isCompleted: false,
             key: Date.now()
         }
@@ -178,6 +190,7 @@ class ToDo extends React.Component {
                             tasksArray={searchResultsToNewArray(this.state.tasksArray)}
                             onTaskCompleted={this.onTaskCompleted}
                             onDeleteTask={this.onDeleteTask}
+                            onSubTaskCompleted={this.onSubTaskCompleted}
                         />
 
                         <TasksList
@@ -187,6 +200,7 @@ class ToDo extends React.Component {
                             onTaskCompleted={this.onTaskCompleted}
                             onDeleteTask={this.onDeleteTask}
                             onButtonsFilterClicked={this.onButtonsFilterClicked}
+                            onSubTaskCompleted={this.onSubTaskCompleted}
                         />
                     </div>
                 </div>

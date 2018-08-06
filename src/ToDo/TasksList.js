@@ -8,7 +8,7 @@ import BookmarkBorder from 'material-ui/svg-icons/action/bookmark-border'
 import Book from 'material-ui/svg-icons/action/book'
 
 
-const TasksList = ({ tasksArray, onTaskCompleted, className, subHeaderText, onDeleteTask, onButtonsFilterClicked }) => {
+const TasksList = ({ tasksArray, onTaskCompleted, className, subHeaderText, onDeleteTask, onButtonsFilterClicked,                             onSubTaskCompleted }) => {
 
     if (tasksArray === null) return null
 
@@ -46,11 +46,13 @@ const TasksList = ({ tasksArray, onTaskCompleted, className, subHeaderText, onDe
                         <Task
                             text={e.text}
                             subText={e.subText}
+                            subIsCompleted={e.subIsCompleted}
                             key={e.key}
                             isCompleted={e.isCompleted}
                             index={index}
                             onTaskCompleted={onTaskCompleted}
                             onDeleteTask={onDeleteTask}
+                            onSubTaskCompleted={onSubTaskCompleted}
                         />
                 )}
             </List>
