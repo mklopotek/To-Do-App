@@ -50,19 +50,22 @@ class ToDo extends React.Component {
         })
     }
 
-    onSubTaskCompleted = (event) => {
-
-        const indexSubTask = event.target.id
-        const indexTask = event.target.label
-        console.log(event)
-
-        // let newTasksArray = this.state.tasksArray
-        
-        // newTasksArray[indexTask].subIsCompleted[indexSubTask] = tasksArray[indexTask].subIsCompleted[indexSubTask]? false : true
-
-        // this.setState({
-        //     tasksArray: newTasksArray
-        // })
+    onSubTaskCompleted = (event, indexTask, indexSubTask) => {
+        console.log( indexTask, indexSubTask)
+        this.setState({
+            tasksArray: this.state.tasksArray.map((task, index) => {
+                if(index === indexTask){
+                    return {
+                        ...task,
+                        subIsCompleted: task.subIsCompleted.map((isCompleted, index) => 
+                            index === indexSubTask ? !isCompleted : isCompleted
+                        )
+                    }
+                }else{
+                    return task
+                }
+            })
+        })
     }
 
 

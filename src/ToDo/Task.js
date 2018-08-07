@@ -18,7 +18,7 @@ const Task = ({ text, subText, isCompleted, index, onTaskCompleted, onDeleteTask
                     key={i}
                     id={'' + i}
                     label={'' + index}
-                    onClick={onSubTaskCompleted}
+                    onClick={e => onSubTaskCompleted(e, index, i)}
                 />
             )
         }
