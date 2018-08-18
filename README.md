@@ -1,7 +1,2 @@
-Hi! Every respected beginner programmer should create 'To Do App'
+This is the older version of my own To Do App. The new one you can find here: [My Awesome To Do App](https://github.com/mklopotek/MyAwesome-ToDo-App)
 ====================================
-So do I! :)
--------------------------------------
-
-This project was bootstrapped with [Create React App](https://github.com/mklopotek/MyAwesome-ToDo-App)
--------------------------------------------------------
